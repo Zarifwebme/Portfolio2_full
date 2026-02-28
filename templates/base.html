@@ -1,0 +1,257 @@
+{% load i18n %}
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>{% block title %}Portfolio{% endblock %}</title>
+
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Icons (ixtiyoriy, chap ikonlar uchun) -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+  <style>
+    :root{
+      --bg: #2b2f36;
+      --panel: #303641;
+      --text: #d7dbe3;
+      --muted: #9aa3b2;
+      --line: rgba(255,255,255,.14);
+      --accent: #b06cff; /* purple */
+    }
+
+    body{
+      background: var(--bg);
+      color: var(--text);
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    }
+
+    a{ color: var(--text); text-decoration: none; }
+    a:hover{ color: white; }
+
+    /* top nav */
+    .topbar{
+      padding: 18px 0;
+    }
+    .brand{
+      display:flex; align-items:center; gap:10px;
+      font-weight:700;
+      letter-spacing:.5px;
+    }
+    .brand .logo{
+      width:12px; height:12px;
+      border:2px solid var(--text);
+      transform: rotate(45deg);
+      display:inline-block;
+    }
+
+    .navlink{
+      color: var(--muted);
+      padding: 6px 10px;
+      border-radius: 8px;
+    }
+    .navlink strong{ color: var(--accent); font-weight:700; }
+    .navlink.active{
+      color: var(--text);
+    }
+
+    /* layout */
+    .shell{
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    .content-wrap{
+      flex: 1;
+      padding: 10px 0 70px;
+    }
+
+    /* left mini bar (oddiy) */
+    .leftbar{
+      position: fixed;
+      left: 16px;
+      top: 120px;
+      display:flex;
+      flex-direction: column;
+      gap: 14px;
+      opacity: .75;
+    }
+    .leftbar a{
+      width: 34px; height: 34px;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      display:flex; align-items:center; justify-content:center;
+      background: rgba(0,0,0,.06);
+    }
+
+    /* decor (nuqtalar / kvadrat) */
+    .dots{
+      position:absolute;
+      width: 140px; height: 140px;
+      background-image: radial-gradient(rgba(255,255,255,.20) 1px, transparent 1px);
+      background-size: 14px 14px;
+      opacity: .25;
+      pointer-events:none;
+    }
+    .square{
+      position:absolute;
+      width: 70px; height: 70px;
+      border: 1px solid rgba(176,108,255,.45);
+      opacity: .55;
+      pointer-events:none;
+    }
+    /* ---------- Responsive tweaks ---------- */
+    @media (max-width: 991.98px){
+      .leftbar{ display:none !important; }   /* mobil/tablet chap ikonlar yo'q */
+      .dots, .square{ display:none; }        /* dekorlar mobilga shart emas */
+      .topbar{ padding: 12px 0; }
+    
+      .navlink{
+        width: 100%;
+        border: 1px solid var(--line);
+        background: rgba(0,0,0,.06);
+      }
+    
+      .content-wrap{ padding: 8px 0 30px; }
+      footer{ margin-top: 50px; }
+    }
+
+@media (max-width: 575.98px){
+  .container{ padding-left: 14px; padding-right: 14px; }
+}
+
+    /* footer */
+    footer{
+      border-top: 1px solid var(--line);
+      padding: 18px 0;
+      color: var(--muted);
+      font-size: 13px;
+      margin-top: 80px;
+    }
+
+    .panel{
+      border: 1px solid var(--line);
+      background: rgba(0,0,0,.06);
+      border-radius: 14px;
+      padding: 18px;
+    }
+    .brand-name{
+      color: #dddddd;
+      font-weight: 800;
+      letter-spacing: 2px;
+    }
+
+    {% block page_base_css %}{% endblock %}
+  </style>
+
+  {% block extra_css %}{% endblock %}
+</head>
+<body>
+  <div class="shell">
+
+    <!-- chap ikonlar (oddiy) -->
+    <div class="leftbar d-none d-lg-flex">
+      <a href="https://github.com/Zarifwebme" target="_blank" rel="noreferrer" title="GitHub"><i class="bi bi-github"></i></a>
+      <a href="https://www.linkedin.com/in/zarifjon-baxtiyorov-b789a3267/" title="Design"><i class="bi bi-linkedin"></i></a>
+    </div>
+
+    <!-- decor -->
+    <div class="dots" style="left: 40px; bottom: 90px;"></div>
+    <div class="dots" style="right: 60px; top: 180px;"></div>
+    <div class="square" style="right: 120px; top: 240px;"></div>
+    <div class="square" style="right: 160px; top: 280px;"></div>
+
+    <div class="container">
+      <!-- topbar -->
+      <!-- topbar -->
+      <nav class="navbar navbar-expand-lg topbar">
+        <div class="container px-0">
+          <a class="navbar-brand brand m-0" href="{% url 'home' %}">
+            <span class="logo"></span>
+            <span class="brand-name">ZARIFJON</span>
+          </a>
+          
+          <button class="navbar-toggler btn btn-sm btn-outline-light"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#mainNav"
+                  aria-controls="mainNav"
+                  aria-expanded="false"
+                  aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+            Menu
+          </button>
+        
+          <div class="collapse navbar-collapse justify-content-end mt-3 mt-lg-0" id="mainNav">
+            <div class="d-flex flex-column flex-lg-row align-items-start align-items-lg-center gap-2 gap-lg-2">
+              <a class="navlink {% if request.resolver_match.url_name == 'home' %}active{% endif %}" href="{% url 'home' %}">
+                <strong>#</strong>{% trans "home" %}
+              </a>
+              <a class="navlink {% if request.resolver_match.url_name == 'projects' %}active{% endif %}" href="{% url 'projects' %}">
+                <strong>#</strong>{% trans "works" %}
+              </a>
+              <a class="navlink {% if request.resolver_match.url_name == 'about' %}active{% endif %}" href="{% url 'about' %}">
+                <strong>#</strong>{% trans "about-me" %}
+              </a>
+              <a class="navlink {% if request.resolver_match.url_name == 'contact' %}active{% endif %}" href="{% url 'contact' %}">
+                <strong>#</strong>{% trans "contacts" %}
+              </a>
+            
+              <form action="{% url 'set_language' %}" method="post" class="ms-0 ms-lg-2 mt-2 mt-lg-0">
+                {% csrf_token %}
+                <input name="next" type="hidden" value="{{ request.get_full_path }}">
+                            
+                {% get_current_language as CURRENT_LANG %}
+                <select name="language"
+                        class="form-select form-select-sm bg-dark text-light border-secondary"
+                        onchange="this.form.submit()">
+                            
+                  <option value="en" {% if CURRENT_LANG == "en" %}selected{% endif %}>EN</option>
+                  <option value="uz" {% if CURRENT_LANG == "uz" %}selected{% endif %}>UZ</option>
+                  <option value="ru" {% if CURRENT_LANG == "ru" %}selected{% endif %}>RU</option>
+                            
+                </select>
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+
+      <div class="content-wrap">
+        {% block content %}{% endblock %}
+      </div>
+    </div>
+    <br>
+    <footer>
+      <div class="container d-flex align-items-center justify-content-between">
+        <div>
+          <div class="d-flex align-items-center gap-2">
+            <span class="logo" style="transform: rotate(45deg);"></span>
+          </div>
+          <div class="mt-1">Backend developer</div>
+        </div>
+
+        <div class="text-end">
+          <div style="color:var(--text); font-weight:700;">{% trans "Media" %}</div>
+          <div class="d-flex gap-2 justify-content-end mt-1">
+            <a class="accent" href="https://github.com/Zarifwebme" target="_blank" rel="noreferrer"><i class="bi bi-github"></i></a>
+            <a class="accent" href="https://www.linkedin.com/in/zarifjon-baxtiyorov-b789a3267/" target="_blank" rel="noreferrer"><i class="bi bi-linkedin"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="container text-center mt-3" style="opacity:.7;">
+        © {% trans "Copyright 2025. Made by Zarifjon Baxtiyorov. All rights reserved." %}
+      </div>
+    </footer>
+
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  {% block extra_js %}{% endblock %}
+</body>
+</html>

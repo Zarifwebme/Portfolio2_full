@@ -1,0 +1,128 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}About{% endblock %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/about.css' %}">
+{% endblock %}
+
+{% block content %}
+{% load i18n %}
+<div class="mt-4">
+  <div class="page-title">
+    <span class="slash">/</span>{% trans "about-me" %}
+  </div>
+  {% comment %} <div class="subtitle">{% trans "Who am i?" %}</div> {% endcomment %}
+
+  <div class="row mt-4 g-4">
+    <!-- ===== Experience ===== -->
+    <h2 class="section-title mt-5"><span class="hash">#</span>{% trans "Experience" %}</h2>
+
+    <div class="panel mt-3">
+      <h5 class="fw-bold">Backend Developer</h5>
+      <p class="muted mb-0">
+        {% trans "Worked on scalable web applications and startups. The projects in my portfolio solve real problems. Google Extensions for time tracking." %}
+      </p>
+    </div>
+
+
+    <!-- ===== Internship & Community ===== -->
+    <h2 class="section-title mt-5"><span class="hash">#</span>{% trans "Internship" %}</h2>
+
+    <div class="row g-3 mt-2">
+    
+      <div class="col-md-6">
+        <div class="panel h-100">
+          <h6 class="fw-bold">
+            {% trans "Inspection for Control in the Sphere of Informatization and Telecommunications under the Ministry of Digital Technologies 'Uzkomnazorat'" %}
+          </h6>
+        
+          <a href="#" class="btn btn-sm btn-outline-light mt-2">
+            {% trans "Download internship report" %} ↗
+          </a>
+        </div>
+      </div>
+    
+      <div class="col-md-6">
+        <div class="panel h-100">
+          <h6 class="fw-bold">{% trans "Turin Polytechnic University in Tashkent" %}</h6>
+        
+          <a href="#" class="btn btn-sm btn-outline-light mt-2">
+            {% trans "Download diploma" %} ↗
+          </a>
+        </div>
+      </div>
+    
+      <div class="col-md-6">
+        <div class="panel h-100">
+          <h6 class="fw-bold">{% trans "New Uzbekistan Journal of Academic Research" %} – Vintage Heaven</h6>
+        
+          <a href="#" class="btn btn-sm btn-outline-light mt-2">
+            {% trans "Download article" %} ↗
+          </a>
+        </div>
+      </div>
+    
+    </div>
+
+
+    <!-- ===== Education ===== -->
+    <h2 class="section-title mt-5"><span class="hash">#</span>{% trans "Education" %}</h2>
+
+    <div class="panel mt-3">
+      <h5 class="fw-bold">{% trans "Turin Polytechnic University in Tashkent" %}</h5>
+      <p class="mb-1">{% trans "Bachelor – Software Engineering" %}</p>
+      <p class="muted mb-1">GPA: 3.6 / 4</p>
+      <p class="muted mb-0">{% trans "September 2022 – June 2025" %}</p>
+    </div>
+
+    {% comment %} <!-- rasm yo'q: o'rniga kichik dekor panel -->
+    <div class="col-lg-5">
+      <div class="panel about-panel">
+        <div class="text-muted" style="font-size:14px;">
+          Image removed (as you asked). This block can be used for anything later.
+        </div>
+      </div>
+    </div> {% endcomment %}
+  </div>
+
+  <h2 class="section-title mt-5"><span class="hash">#</span>{% trans "skills" %}</h2>
+
+  <div class="row g-3 mt-2">
+    <div class="col-md-6 col-lg-3">
+      <div class="skillbox">
+        <div class="skillhead">{% trans "Languages" %}</div>
+        <div class="skillbody">Python<br/>JavaScript C++ Kotlin</div>
+      </div>
+    </div>
+    <div class="col-md-6 col-lg-3">
+      <div class="skillbox">
+        <div class="skillhead">{% trans "Databases" %}</div>
+        <div class="skillbody">PostgreSQL<br/>MySQL, SQLite</div>
+      </div>
+    </div>
+    <div class="col-md-6 col-lg-3">
+      <div class="skillbox">
+        <div class="skillhead">{% trans "Tools" %}</div>
+        <div class="skillbody">Docker<br/>Figma Git</div>
+      </div>
+    </div>
+    <div class="col-md-6 col-lg-3">
+      <div class="skillbox">
+        <div class="skillhead">{% trans "Frameworks" %}</div>
+        <div class="skillbody">Django DRF Flask<br/>Jinja Keras</div>
+      </div>
+    </div>
+    <div class="col-md-6 col-lg-3">
+      <div class="skillbox">
+        <div class="skillhead">{% trans "Other" %}</div>
+        <div class="skillbody">OOP Pandas Numpy Sklearn<br/>Machine Learning SL UL RL<br/>Deep Learning CNN RNN</div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/about.js' %}"></script>
+{% endblock %}

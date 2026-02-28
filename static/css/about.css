@@ -1,0 +1,55 @@
+.page-title{ font-size: 34px; font-weight: 800; }
+.page-title .slash{ color: var(--accent); }
+.subtitle{ color: var(--muted); margin-top: 6px; font-size: 14px; }
+
+.para{ font-size: 14px; line-height: 1.9; margin-bottom: 12px; }
+.muted{ color: var(--muted); }
+
+.about-panel{ min-height: 180px; display:flex; align-items:center; }
+
+.section-title{ font-size: 22px; font-weight: 800; margin-bottom: 6px; }
+.section-title .hash{ color: var(--accent); }
+
+.skillbox{
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: rgba(0,0,0,.06);
+  overflow: hidden;
+}
+.skillhead{
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--line);
+  font-weight: 800;
+}
+.skillbody{
+  padding: 10px 12px;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+.panel h5,
+.panel h6{
+  color: var(--text);
+}
+
+.panel a{
+  transition: .25s;
+}
+
+.panel a:hover{
+  background: rgba(176,108,255,0.1);
+  border-color: #b06cff;
+}
+
+@media (max-width: 575.98px){
+  .panel{
+    padding: 14px;
+  }
+}
+
+@media (max-width: 575.98px){
+  .page-title{ font-size: 28px; }
+  .section-title{ font-size: 20px; }
+  .para{ font-size: 13px; }
+}

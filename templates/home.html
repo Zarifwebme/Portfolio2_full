@@ -1,0 +1,60 @@
+
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Home{% endblock %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/home.css' %}">
+{% endblock %}
+
+{% block content %}
+{% load i18n %}
+<div class="row align-items-center g-4 mt-4">
+  <div class="col-lg-6">
+    <div class="page-title">
+      <span class="slash">/</span>{% trans "home" %}
+    </div>
+
+    <h1 class="headline mt-4">
+      Zarifjon <span class="accent">software engineer</span> va<br/>
+      <span class="accent">backend developer</span>
+    </h1>
+
+    <p class="leadtext mt-3">
+      {% trans "I create practical and scalable solutions for startups, focusing on performance, automation, and real user needs." %}
+    </p>
+
+    <a class="btn btn-outline-light btn-sm px-3 mt-3" href="{% url 'contact' %}">
+      {% trans "Contact me" %}
+    </a>
+  </div>
+
+  <div class="col-lg-6">
+    <!-- rasm o'rniga sodda panel -->
+    <div class="panel home-panel">
+      <div class="small-label mb-3">
+        <span class="mini-dot"></span>
+        <span class="accent">console</span>
+      </div>
+    
+      <pre class="codebox"><code id="typeTarget"></code><span class="caret" aria-hidden="true"></span></pre>
+    
+      <!-- JS uchun data -->
+      <div id="typeData" class="d-none"
+           data-lines='[
+             "pip install django",
+             "django-admin startproject myportfolio .",
+             "python manage.py startapp myportfolio",
+             "python manage.py makemigrations",
+             "python manage.py migrate",
+             "python manage.py runserver"
+           ]'>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/home.js' %}"></script>
+{% endblock %}

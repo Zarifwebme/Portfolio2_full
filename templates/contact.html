@@ -1,0 +1,106 @@
+{% extends "base.html" %}
+{% load static %}
+{% load i18n %}
+
+{% block title %}Contact{% endblock %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/contact.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="mt-4">
+  <div class="page-title">
+    <span class="slash">/</span>{% trans "contacts" %}
+  </div>
+
+  
+
+  <div class="row g-4 mt-4">
+    <!-- Left: Support / Message -->
+    <div class="col-lg-6">
+      <div class="row g-3">
+        <div class="col-md-6">
+          <div class="panel mini">
+            <div class="mini-title">{% trans "Support me here" %}</div>
+            <div class="mini-val">9860350148095226</div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="panel mini">
+            <div class="mini-title">{% trans "Message me here" %}</div>
+            <div class="mini-val">Zarifjon<br/>baxtiyorovzarif@gmail.com</div>
+          </div>
+        </div>
+      </div>
+      <div class="panel mt-3 term-panel">
+        <div class="term-head">
+          <span class="hash">#</span>live-console
+          <span class="term-dot"></span>
+        </div>
+      
+        <pre class="term-body"><code id="termOut"></code><span class="term-caret"></span></pre>
+      </div>
+    </div>
+
+    <!-- Right: Form -->
+    <div class="col-lg-6">
+      <div class="panel">
+        <div class="form-title"><span class="hash">#</span>{% trans "contact-form" %}</div>
+        <div id="formStatus" class="muted small"></div>
+        <br>
+        <form id="contactForm" method="post" action="">
+          {% csrf_token %}
+
+          <div class="row g-3 mt-1">
+            <div class="col-md-6">
+              <label class="form-label small muted">{% trans "Name" %}</label>
+              <input class="form-control dark-input" name="name" placeholder="{% trans "Your name" %}" autocomplete="off"/>
+            </div>
+
+            <div class="col-md-6">
+              <label class="form-label small muted">{% trans "Phone" %}</label>
+              <input class="form-control dark-input" name="phone" autocomplete="off"/>
+            </div>
+
+            <div class="col-12">
+              <label class="form-label small muted">{% trans "Email" %}</label>
+              <input type="email" class="form-control dark-input" name="email" autocomplete="off"/>
+            </div>
+
+            <div class="col-12">
+              <label class="form-label small muted">{% trans "Message" %}</label>
+              <textarea class="form-control dark-input" name="message" rows="4" autocomplete="off"></textarea>
+            </div>
+
+            <div class="col-12 d-flex justify-content-between align-items-center mt-2">
+              <div class="col-12 d-flex justify-content-between align-items-center mt-2">
+                <div class="d-flex align-items-center gap-2 flex-wrap">
+                  <!-- typing animatsiya shu yerda -->
+                  
+                
+                  <!-- backend messages send yonida chiqadi -->
+                  {% if messages %}
+                    {% for m in messages %}
+                      <span class="mini-alert mini-alert-{{ m.tags }}">{{ m }}</span>
+                    {% endfor %}
+                  {% endif %}
+                </div>
+              
+                <button class="btn btn-sm btn-outline-light px-3" type="submit">
+                  {% trans "Send" %} ↗
+                </button>
+              </div>
+            </div>
+          </div>
+        </form>
+
+      </div>
+    </div>
+
+  </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/contact.js' %}"></script>
+{% endblock %}

@@ -1,0 +1,207 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-02-28 16:03+0500\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || "
+"(n%100>=11 && n%100<=14)? 2 : 3);\n"
+
+#: .\rootloyiha\settings.py:119
+msgid "English"
+msgstr ""
+
+#: .\rootloyiha\settings.py:120
+msgid "Uzbek"
+msgstr ""
+
+#: .\rootloyiha\settings.py:121
+msgid "Russian"
+msgstr ""
+
+#: .\templates\about.html:13 .\templates\base.html:198
+msgid "about-me"
+msgstr "обо-мне"
+
+#: .\templates\about.html:15
+msgid "Who am i?"
+msgstr "Кто я?"
+
+#: .\templates\about.html:19
+msgid "Experience"
+msgstr "Опыт"
+
+#: .\templates\about.html:24
+msgid ""
+"Worked on scalable web applications and startups. The projects in my "
+"portfolio solve real problems. Google Extensions for time tracking."
+msgstr "Работал над масштабируемыми веб-приложениями и стартапами. Проекты в моем портфолио решают реальные проблемы. Расширения Google для учета рабочего времени."
+
+#: .\templates\about.html:30
+msgid "Internship"
+msgstr "Стажировка"
+
+#: .\templates\about.html:37
+msgid ""
+"Inspection for Control in the Sphere of Informatization and "
+"Telecommunications under the Ministry of Digital Technologies 'Uzkomnazorat'"
+msgstr "Инспекция по контролю в сфере информатизации и телекоммуникаций при Министерстве цифровых технологий 'Узкомназорат'"
+
+#: .\templates\about.html:41
+msgid "Download internship report"
+msgstr "Скачать отчет о стажировке"
+
+#: .\templates\about.html:48 .\templates\about.html:73
+msgid "Turin Polytechnic University in Tashkent"
+msgstr "Туринский политехнический университет в Ташкенте"
+
+#: .\templates\about.html:51
+msgid "Download diploma"
+msgstr "Скачать диплом"
+
+#: .\templates\about.html:58
+msgid "New Uzbekistan Journal of Academic Research"
+msgstr "Новый узбекский журнал академических исследований"
+
+#: .\templates\about.html:61
+msgid "Download article"
+msgstr "Скачать статью"
+
+#: .\templates\about.html:70
+msgid "Education"
+msgstr "Образование"
+
+#: .\templates\about.html:74
+msgid "Bachelor – Software Engineering"
+msgstr "Бакалавр – Программная инженерия"
+
+#: .\templates\about.html:76
+msgid "September 2022 – June 2025"
+msgstr "Сентябрь 2022 г. – июнь 2025 г."
+
+#: .\templates\about.html:90
+msgid "skills"
+msgstr "навыки"
+
+#: .\templates\about.html:95
+msgid "Languages"
+msgstr "Языки"
+
+#: .\templates\about.html:101
+msgid "Databases"
+msgstr "Базы данных"
+
+#: .\templates\about.html:107
+msgid "Tools"
+msgstr "Инструменты"
+
+#: .\templates\about.html:113
+msgid "Frameworks"
+msgstr "Frameworks"
+
+#: .\templates\about.html:119
+msgid "Other"
+msgstr "Другой"
+
+#: .\templates\base.html:192 .\templates\home.html:15
+msgid "home"
+msgstr "главный"
+
+#: .\templates\base.html:195
+msgid "works"
+msgstr "проекты"
+
+#: .\templates\base.html:201 .\templates\contact.html:13
+msgid "contacts"
+msgstr "контакты"
+
+#: .\templates\base.html:239
+msgid "Media"
+msgstr "СМИ"
+
+#: .\templates\base.html:249
+msgid "Copyright 2025. Made by Zarifjon Baxtiyorov. All rights reserved."
+msgstr "Авторские права принадлежат Зарифжону Бахтиёрову, 2025 год. Все права защищены."
+
+#: .\templates\contact.html:24
+msgid "Support me here"
+msgstr "Поддержи меня здесь"
+
+#: .\templates\contact.html:30
+msgid "Message me here"
+msgstr "Напишите мне здесь"
+
+#: .\templates\contact.html:48
+msgid "contact-form"
+msgstr "контактная-форма"
+
+#: .\templates\contact.html:56
+msgid "Name"
+msgstr "Имя"
+
+#: .\templates\contact.html:57
+msgid "Your name"
+msgstr "Ваше имя"
+
+#: .\templates\contact.html:61
+msgid "Phone"
+msgstr "Телефон"
+
+#: .\templates\contact.html:66
+msgid "Email"
+msgstr "Электронная почта"
+
+#: .\templates\contact.html:71
+msgid "Message"
+msgstr "Сообщение"
+
+#: .\templates\contact.html:90
+msgid "Send"
+msgstr "Отправлять"
+
+#: .\templates\home.html:24
+msgid ""
+"I create practical and scalable solutions for startups, focusing on "
+"performance, automation, and real user needs."
+msgstr "Я создаю практичные и масштабируемые решения для стартапов, уделяя особое внимание производительности, автоматизации и реальным потребностям пользователей."
+
+#: .\templates\home.html:28
+msgid "Contact me"
+msgstr "Свяжитесь со мной"
+
+#: .\templates\projects.html:13
+msgid "projects"
+msgstr "проекты"
+
+#: .\templates\projects.html:15
+msgid "List of my projects"
+msgstr "Список моих проектов"
+
+#: .\templates\projects.html:17
+msgid "complete-apps"
+msgstr "полные-приложения"
+
+#: .\templates\projects.html:47
+msgid "No complete projects available"
+msgstr "Нет готовых проектов"
+
+#: .\templates\projects.html:51
+msgid "small-projects"
+msgstr "небольшие-проекты"
+
+#: .\templates\projects.html:70
+msgid "No small projects available"
+msgstr "Нет небольших проектов"
