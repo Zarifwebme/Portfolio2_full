@@ -15,9 +15,9 @@ from pathlib import Path
 from django.utils.translation import gettext_lazy as _
 
 from dotenv import load_dotenv
-import os
 
-load_dotenv()
+
+# load_dotenv(os.path.expanduser("~/.env"))
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -27,12 +27,16 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/6.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-6w#0ve()$0j+^ig!dazzs=gw^v=y(ujh%=u*z=@19-df#%3%6y'
+SECRET_KEY = os.getenv("SECRET_KEY", "fallback-dev-key")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.getenv("DEBUG", "False") == "True"
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    "127.0.0.1",
+    "localhost",
+    "zarifjon.pythonanywhere.com",
+]
 
 
 # Application definition
@@ -77,7 +81,8 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'rootloyiha.wsgi.application'
-
+load_dotenv(BASE_DIR / ".env")          # loyiha rootdagi .env
+load_dotenv(os.path.expanduser("~/.env"))  # serverdagi ~/.env
 
 # Database
 # https://docs.djangoproject.com/en/6.0/ref/settings/#databases
@@ -125,14 +130,15 @@ LANGUAGES = [
     ("uz", _("Uzbek")),
     ("ru", _("Russian")),
 ]
-USE_I18N = True
+
 LOCALE_PATHS = [BASE_DIR / "locale"]
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
 
-STATIC_URL = "static/"
-STATICFILES_DIRS = [BASE_DIR / "static"]
+STATIC_URL = "/static/"
+STATICFILES_DIRS = [BASE_DIR / "static"]   # sizning static/ papkangiz
+STATIC_ROOT = BASE_DIR / "staticfiles"     # faqat collectstatic uchun
 
 
 MEDIA_URL = "/media/"
