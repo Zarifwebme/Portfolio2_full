@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-02-28 16:03+0500\n"
+"POT-Creation-Date: 2026-03-14 17:43+0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,121 +18,145 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: .\rootloyiha\settings.py:119
+#: .\rootloyiha\settings.py:129
 msgid "English"
 msgstr ""
 
-#: .\rootloyiha\settings.py:120
+#: .\rootloyiha\settings.py:130
 msgid "Uzbek"
 msgstr ""
 
-#: .\rootloyiha\settings.py:121
+#: .\rootloyiha\settings.py:131
 msgid "Russian"
 msgstr ""
 
-#: .\templates\about.html:13 .\templates\base.html:198
+#: .\templates\about.html:13 .\templates\base.html:224
 msgid "about-me"
 msgstr "men-haqimda"
 
-#: .\templates\about.html:15
-msgid "Who am i?"
-msgstr "Men kimman?"
-
-#: .\templates\about.html:19
+#: .\templates\about.html:20
 msgid "Experience"
 msgstr "Tajriba"
 
-#: .\templates\about.html:24
+msgid "Hi, I'm Zarifjon Baxtiyorov — a Backend Developer and Software Engineer from Tashkent, Uzbekistan. I specialize in building practical, scalable web applications using Python and Django."
+msgstr "Salom, men Zarifjon Baxtiyorov — Toshkent, O‘zbekistondan Backend Developer va Dasturiy muhandisiman. Python va Django yordamida amaliy, kengaytiriladigan veb-ilovalar yaratishga ixtisoslashganman."
+
+msgid "I'm passionate about automation, clean architecture, and solving real-world problems. I've worked on startup projects, contributed to academic research, and continue to grow in areas like Machine Learning and Deep Learning."
+msgstr "Avtomatlashtirish, toza arxitektura va real muammolarni yechishga qiziqaman. Startup loyihalarida ishlaganman, akademik tadqiqotlarga hissa qo‘shganman va Machine Learning hamda Deep Learning sohalarida rivojlanishda davom etmoqdaman."
+
+msgid "Currently finishing my Bachelor's degree in Software Engineering at Turin Polytechnic University in Tashkent (GPA 3.6/4). Open to freelance or full-time backend roles."
+msgstr "Hozirda Toshkentdagi Turin Politexnika Universitetida Dasturiy Muhandislik bo‘yicha bakalavr diplomini yakunlamoqdaman (GPA 3.6/4). Frilanser yoki doimiy backend lavozimlariga ochiqman."
+
+msgid "Location"
+msgstr "Joylashuv"
+
+msgid "Role"
+msgstr "Lavozim"
+
+msgid "Stack"
+msgstr "Texnologiyalar"
+
+#: .\templates\about.html:25
 msgid ""
 "Worked on scalable web applications and startups. The projects in my "
 "portfolio solve real problems. Google Extensions for time tracking."
-msgstr "kengaytiriladigan veb-ilovalar va startaplar ustida ishlagan. Portfolio’mdagi loyihalarim real muammolarni yechadi. Vaqtni tejash uchun Google Extensions."
+msgstr ""
+"kengaytiriladigan veb-ilovalar va startaplar ustida ishlagan. "
+"Portfolio’mdagi loyihalarim real muammolarni yechadi. Vaqtni tejash uchun "
+"Google Extensions."
 
-#: .\templates\about.html:30
+#: .\templates\about.html:31
 msgid "Internship"
 msgstr "Amaliyot "
 
-#: .\templates\about.html:37
+#: .\templates\about.html:38
 msgid ""
 "Inspection for Control in the Sphere of Informatization and "
 "Telecommunications under the Ministry of Digital Technologies 'Uzkomnazorat'"
-msgstr "Raqamli texnologiyalar vazirligi huzuridagi Axborotlashtirish va telekommunikatsiyalar sohasida nazorat inspeksiyasi 'Oʻzkomnazorat'"
+msgstr ""
+"Raqamli texnologiyalar vazirligi huzuridagi Axborotlashtirish va "
+"telekommunikatsiyalar sohasida nazorat inspeksiyasi 'Oʻzkomnazorat'"
 
-#: .\templates\about.html:41
+#: .\templates\about.html:42
 msgid "Download internship report"
 msgstr "Amaliyot hisoboti yuklab olish"
 
-#: .\templates\about.html:48 .\templates\about.html:73
+#: .\templates\about.html:49 .\templates\about.html:74
 msgid "Turin Polytechnic University in Tashkent"
 msgstr "Toshkent shahridagi Turin Politexnika Universiteti"
 
-#: .\templates\about.html:51
+#: .\templates\about.html:52
 msgid "Download diploma"
 msgstr "Diplom yuklab olish"
 
-#: .\templates\about.html:58
+#: .\templates\about.html:59
 msgid "New Uzbekistan Journal of Academic Research"
 msgstr "Yangi O'zbekiston ilmiy tadqiqotlar jurnali"
 
-#: .\templates\about.html:61
+#: .\templates\about.html:62
 msgid "Download article"
 msgstr "Maqolani yuklab oling"
 
-#: .\templates\about.html:70
+#: .\templates\about.html:71
 msgid "Education"
 msgstr "Talim"
 
-#: .\templates\about.html:74
+#: .\templates\about.html:75
 msgid "Bachelor – Software Engineering"
 msgstr "Bakalavr - Dasturiy ta'minot muhandisligi"
 
-#: .\templates\about.html:76
+#: .\templates\about.html:77
 msgid "September 2022 – June 2025"
 msgstr "2022 yil sentyabr - 2025 yil iyun"
 
-#: .\templates\about.html:90
+#: .\templates\about.html:91
 msgid "skills"
 msgstr "mahorat"
 
-#: .\templates\about.html:95
+#: .\templates\about.html:96
 msgid "Languages"
 msgstr "Dasturiy tillar"
 
-#: .\templates\about.html:101
+#: .\templates\about.html:102
 msgid "Databases"
 msgstr "Malumotlar bazasi"
 
-#: .\templates\about.html:107
+#: .\templates\about.html:108
 msgid "Tools"
 msgstr "Tools"
 
-#: .\templates\about.html:113
+#: .\templates\about.html:114
 msgid "Frameworks"
 msgstr "Frameworks"
 
-#: .\templates\about.html:119
+#: .\templates\about.html:120
 msgid "Other"
 msgstr "Boshqa"
 
-#: .\templates\base.html:192 .\templates\home.html:15
+#: .\templates\base.html:218 .\templates\home.html:15
 msgid "home"
 msgstr "bosh-sahifa"
 
-#: .\templates\base.html:195
+#: .\templates\base.html:221
 msgid "works"
 msgstr "loyihalar"
 
-#: .\templates\base.html:201 .\templates\contact.html:13
+#: .\templates\base.html:227 .\templates\contact.html:13
 msgid "contacts"
 msgstr "aloqa"
 
-#: .\templates\base.html:239
+#: .\templates\base.html:231
+msgid "Download CV"
+msgstr "CV yuklab olish"
+
+#: .\templates\base.html:268
 msgid "Media"
 msgstr "OAV"
 
-#: .\templates\base.html:249
+#: .\templates\base.html:277
 msgid "Copyright 2025. Made by Zarifjon Baxtiyorov. All rights reserved."
-msgstr "Copyright 2025. Made by Zarifjon Baxtiyorov. Barcha huquqlar himoyalangan."
+msgstr ""
+"Copyright 2025. Made by Zarifjon Baxtiyorov. Barcha huquqlar himoyalangan."
 
 #: .\templates\contact.html:24
 msgid "Support me here"
@@ -174,12 +198,21 @@ msgstr "Yuborish"
 msgid ""
 "I create practical and scalable solutions for startups, focusing on "
 "performance, automation, and real user needs."
-msgstr "Men startaplar uchun amaliy va kengaytiriladigan yechimlarni yarataman, asosiy e'tiborni "
-"ishlash, avtomatlashtirish va haqiqiy foydalanuvchi ehtiyojlari."
+msgstr ""
+"Men startaplar uchun amaliy va kengaytiriladigan yechimlarni yarataman, "
+"asosiy e'tiborni ishlash, avtomatlashtirish va haqiqiy foydalanuvchi "
+"ehtiyojlari."
 
 #: .\templates\home.html:28
 msgid "Contact me"
 msgstr "Men bilan bog'laning"
+
+#: .\templates\about.html
+msgid "I have completed my Bachelor's degree in Software Engineering at Turin Polytechnic University in Tashkent (GPA 3.6/4). Open to freelance or full-time backend roles."
+msgstr "Toshkentdagi Turin Politexnika Universitetida Dasturiy Muhandislik bo'yicha bakalavr diplomini yakunladim (GPA 3.6/4). Frilanser yoki full-time backend loyihalarga ochiqman."
+
+msgid "Graduated"
+msgstr "Bitirganman"
 
 #: .\templates\projects.html:13
 msgid "projects"
@@ -204,3 +237,6 @@ msgstr "kichik-loyihalar"
 #: .\templates\projects.html:70
 msgid "No small projects available"
 msgstr "Kichik loyihalar mavjud emas"
+
+#~ msgid "Who am i?"
+#~ msgstr "Men kimman?"

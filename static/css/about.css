@@ -5,6 +5,20 @@
 .para{ font-size: 14px; line-height: 1.9; margin-bottom: 12px; }
 .muted{ color: var(--muted); }
 
+.badge-grad{
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 6px;
+  background: rgba(176,108,255,.18);
+  border: 1px solid rgba(176,108,255,.55);
+  color: var(--accent);
+  letter-spacing: .4px;
+  vertical-align: middle;
+  margin-left: 6px;
+}
+
 .about-panel{ min-height: 180px; display:flex; align-items:center; }
 
 .section-title{ font-size: 22px; font-weight: 800; margin-bottom: 6px; }

@@ -12,7 +12,29 @@
   <div class="page-title">
     <span class="slash">/</span>{% trans "about-me" %}
   </div>
-  {% comment %} <div class="subtitle">{% trans "Who am i?" %}</div> {% endcomment %}
+
+  <!-- ===== Personal intro ===== -->
+  <div class="row mt-4 g-4 align-items-center">
+    <div class="col-lg-8">
+      <p class="para">
+        {% trans "Hi, I'm Zarifjon Baxtiyorov — a Backend Developer and Software Engineer from Tashkent, Uzbekistan. I specialize in building practical, scalable web applications using Python and Django." %}
+      </p>
+      <p class="para">
+        {% trans "I'm passionate about automation, clean architecture, and solving real-world problems. I've worked on startup projects, contributed to academic research, and continue to grow in areas like Machine Learning and Deep Learning." %}
+      </p>
+      <p class="para">
+        {% trans "I have completed my Bachelor's degree in Software Engineering at Turin Polytechnic University in Tashkent (GPA 3.6/4). Open to freelance or full-time backend roles." %}
+      </p>
+    </div>
+    <div class="col-lg-4">
+      <div class="panel" style="font-size:13px; line-height:2;">
+        <div><span style="color:var(--muted);">{% trans "Location" %}:</span> Tashkent, UZ</div>
+        <div><span style="color:var(--muted);">{% trans "Role" %}:</span> Backend Developer</div>
+        <div><span style="color:var(--muted);">{% trans "Stack" %}:</span> Python · Django · DRF</div>
+        <div><span style="color:var(--muted);">{% trans "Languages" %}:</span> UZ · RU · EN</div>
+      </div>
+    </div>
+  </div>
 
   <div class="row mt-4 g-4">
     <!-- ===== Experience ===== -->
@@ -57,7 +79,7 @@
         <div class="panel h-100">
           <h6 class="fw-bold">{% trans "New Uzbekistan Journal of Academic Research" %} – Vintage Heaven</h6>
         
-          <a href="#" class="btn btn-sm btn-outline-light mt-2">
+          <a href="{% static 'other/YOITJ_0136.pdf' %}" class="btn btn-sm btn-outline-light mt-2" download>
             {% trans "Download article" %} ↗
           </a>
         </div>
@@ -71,7 +93,7 @@
 
     <div class="panel mt-3">
       <h5 class="fw-bold">{% trans "Turin Polytechnic University in Tashkent" %}</h5>
-      <p class="mb-1">{% trans "Bachelor – Software Engineering" %}</p>
+      <p class="mb-1">{% trans "Bachelor – Software Engineering" %} <span class="badge-grad">{% trans "Graduated" %}</span></p>
       <p class="muted mb-1">GPA: 3.6 / 4</p>
       <p class="muted mb-0">{% trans "September 2022 – June 2025" %}</p>
     </div>
