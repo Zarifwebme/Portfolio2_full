@@ -227,7 +227,7 @@
                 <strong>#</strong>{% trans "contacts" %}
               </a>
 
-              <a class="navlink cv-link" href="{% if CURRENT_LANG|slice:':2' == 'uz' %}{% static 'cv/Baxtiyorov_Zarifjon_UZ.docx' %}{% elif CURRENT_LANG|slice:':2' == 'ru' %}{% static 'cv/Baxtiyorov_Zarifjon_CV_RU.docx' %}{% else %}{% static 'cv/Baxtiyorov_Zarifjon_CV_EN.docx' %}{% endif %}" download title="CV yuklash">
+              <a class="navlink cv-link" href="{% if CURRENT_LANG|slice:':2' == 'uz' %}{% static 'cv/Baxtiyorov_Zarifjon_CV_UZ.docx' %}{% elif CURRENT_LANG|slice:':2' == 'ru' %}{% static 'cv/Baxtiyorov_Zarifjon_CV_RU.docx' %}{% else %}{% static 'cv/Baxtiyorov_Zarifjon_CV_EN.docx' %}{% endif %}" download title="CV yuklash">
                 <strong><i class="bi bi-download"></i></strong> {% trans "Download CV" %}
               </a>
             
