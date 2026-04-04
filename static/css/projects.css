@@ -25,7 +25,8 @@
 }
 
 .thumb{
-  height: 150px;
+  aspect-ratio: 16 / 9;
+  height: auto;
   background: linear-gradient(135deg, rgba(176,108,255,.25), rgba(255,255,255,.05));
 }
 
@@ -53,7 +54,8 @@
 .mini-desc{ color: var(--muted); font-size: 13px; margin-top: 6px; line-height: 1.7; }
 
 .thumb{
-  height: 150px;
+  aspect-ratio: 16 / 9;
+  height: auto;
   background: linear-gradient(135deg, rgba(176,108,255,.25), rgba(255,255,255,.05));
   overflow: hidden;
 }
@@ -100,7 +102,6 @@ body:has(.complete-grid .pcard:hover)::before{
 @media (max-width: 575.98px){
   .page-title{ font-size: 28px; }
   .section-title{ font-size: 20px; }
-  .thumb{ height: 130px; }
   .pcard-title{ font-size: 17px; }
   .pcard-desc{ font-size: 13px; }
 }
