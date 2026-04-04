@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block title %}{% trans "Page not found" %}{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+  <div class="panel text-center" style="max-width: 680px; margin: 40px auto;">
+    <h1 style="font-size: 42px; font-weight: 800; margin-bottom: 10px;">404</h1>
+    <p style="color: var(--muted); font-size: 16px; margin-bottom: 22px;">
+      {% trans "The page you requested is not available or an error occurred." %}
+    </p>
+    <a href="{% url 'home' %}" class="btn btn-outline-light">{% trans "Back to home" %}</a>
+  </div>
+</div>
+{% endblock %}
