@@ -29,6 +29,7 @@
       background: var(--bg);
       color: var(--text);
       font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      margin: 0;
     }
 
     a{ color: var(--text); text-decoration: none; }
@@ -83,7 +84,7 @@
       flex-direction: column;
     }
     .content-wrap{
-      flex: 1;
+      flex: 1 0 auto;
       padding: 10px 0 70px;
     }
 
@@ -154,7 +155,14 @@
       padding: 18px 0;
       color: var(--muted);
       font-size: 13px;
-      margin-top: 80px;
+      margin-top: auto;
+    }
+
+    .footer-main{
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
     }
 
     .panel{
@@ -167,6 +175,22 @@
       color: #dddddd;
       font-weight: 800;
       letter-spacing: 2px;
+    }
+
+    @media (max-width: 767.98px){
+      .footer-main{
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .footer-main .text-end{
+        text-align: left !important;
+        width: 100%;
+      }
+
+      .footer-main .justify-content-end{
+        justify-content: flex-start !important;
+      }
     }
 
     {% block page_base_css %}{% endblock %}
@@ -254,9 +278,8 @@
         {% block content %}{% endblock %}
       </div>
     </div>
-    <br>
     <footer>
-      <div class="container d-flex align-items-center justify-content-between">
+      <div class="container footer-main">
         <div>
           <div class="d-flex align-items-center gap-2">
             <span class="logo" style="transform: rotate(45deg);"></span>
