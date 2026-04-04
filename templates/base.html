@@ -96,14 +96,50 @@
       display:flex;
       flex-direction: column;
       gap: 14px;
-      opacity: .75;
+      opacity: .9;
     }
     .leftbar a{
-      width: 34px; height: 34px;
+      position: relative;
+      width: 40px;
+      height: 40px;
       border: 1px solid var(--line);
-      border-radius: 10px;
+      border-radius: 12px;
       display:flex; align-items:center; justify-content:center;
       background: rgba(0,0,0,.06);
+      box-shadow: 0 0 0 1px rgba(255,255,255,.02) inset;
+      transition: transform .18s ease, background .18s ease, border-color .18s ease, box-shadow .18s ease;
+    }
+    .leftbar a i{
+      font-size: 1.15rem;
+    }
+    .leftbar a::after{
+      content: attr(data-label);
+      position: absolute;
+      left: 100%;
+      top: 50%;
+      transform: translate(10px, -50%);
+      opacity: 0;
+      white-space: nowrap;
+      padding: 5px 10px;
+      border-radius: 999px;
+      background: rgba(0, 0, 0, .48);
+      border: 1px solid rgba(255, 255, 255, .12);
+      color: var(--text);
+      font-size: .82rem;
+      font-weight: 700;
+      letter-spacing: .2px;
+      pointer-events: none;
+      transition: opacity .18s ease, transform .18s ease;
+    }
+    .leftbar a:hover{
+      transform: translateY(-1px);
+      background: rgba(176,108,255,.14);
+      border-color: rgba(176,108,255,.45);
+      box-shadow: 0 8px 18px rgba(0,0,0,.18);
+    }
+    .leftbar a:hover::after{
+      opacity: 1;
+      transform: translate(16px, -50%);
     }
 
     /* decor (nuqtalar / kvadrat) */
@@ -220,8 +256,8 @@
 
     <!-- chap ikonlar (oddiy) -->
     <div class="leftbar d-none d-lg-flex">
-      <a href="https://github.com/Zarifwebme" target="_blank" rel="noreferrer" title="GitHub"><i class="bi bi-github"></i></a>
-      <a href="https://www.linkedin.com/in/zarifjon-baxtiyorov-b789a3267/" title="Design"><i class="bi bi-linkedin"></i></a>
+      <a href="https://github.com/Zarifwebme" target="_blank" rel="noreferrer" title="GitHub" data-label="GitHub"><i class="bi bi-github"></i></a>
+      <a href="https://www.linkedin.com/in/zarifjon-baxtiyorov-b789a3267/" title="LinkedIn" data-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
     </div>
 
     <!-- decor -->
