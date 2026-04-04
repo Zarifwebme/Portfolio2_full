@@ -1,4 +1,5 @@
 from django.db import models
+from django.core.exceptions import ValidationError
 
 class Project(models.Model):
     CATEGORY_CHOICES = [
@@ -20,6 +21,13 @@ class Project(models.Model):
     stack = models.CharField(max_length=180, blank=True)  # "React Node.js ..." kabi
     button_type = models.CharField(max_length=20, choices=BUTTON_CHOICES, default="live")
     button_url = models.URLField(blank=True)
+    button_choice = models.CharField(
+        max_length=20,
+        choices=[("none", "None"), ("github", "Github")],
+        default="none",
+        blank=True,
+    )
+    button_choice_url = models.URLField(blank=True)
 
     is_active = models.BooleanField(default=True)
     order = models.PositiveIntegerField(default=0)
@@ -28,6 +36,17 @@ class Project(models.Model):
 
     class Meta:
         ordering = ["order", "-created_at"]
+
+    def clean(self):
+        super().clean()
+        if self.button_type != "live" and self.button_choice != "none":
+            raise ValidationError(
+                {"button_choice": "Qo'shimcha tugma faqat Live tugma tanlanganda ishlaydi."}
+            )
+        if self.button_choice != "none" and not self.button_choice_url:
+            raise ValidationError(
+                {"button_choice_url": "Qo'shimcha tugma uchun URL kiriting."}
+            )
 
     def __str__(self):
         return self.title

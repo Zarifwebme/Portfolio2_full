@@ -36,6 +36,11 @@
                 {{ p.button_type|capfirst }} ↗
               </a>
             {% endif %}
+            {% if p.button_choice != "none" and p.button_choice_url %}
+              <a class="btn btn-sm btn-outline-light" href="{{ p.button_choice_url }}" target="_blank" rel="noreferrer">
+                {{ p.button_choice|capfirst }} ↗
+              </a>
+            {% endif %}
             {% if p.button_type == "cached" %}
               <span class="btn btn-sm btn-outline-secondary disabled">Cached</span>
             {% endif %}
@@ -61,6 +66,11 @@
           {% if p.button_url %}
             <a class="btn btn-sm btn-outline-light" href="{{ p.button_url }}" target="_blank" rel="noreferrer">
               {{ p.button_type|capfirst }} ↗
+            </a>
+          {% endif %}
+          {% if p.button_choice != "none" and p.button_choice_url %}
+            <a class="btn btn-sm btn-outline-light" href="{{ p.button_choice_url }}" target="_blank" rel="noreferrer">
+              {{ p.button_choice|capfirst }} ↗
             </a>
           {% endif %}
         </div>
