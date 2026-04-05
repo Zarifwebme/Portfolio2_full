@@ -199,9 +199,9 @@ msgid ""
 "I create practical and scalable solutions for startups, focusing on "
 "performance, automation, and real user needs."
 msgstr ""
-"Men startaplar uchun amaliy va kengaytiriladigan yechimlarni yarataman, "
-"asosiy e'tiborni ishlash, avtomatlashtirish va haqiqiy foydalanuvchi "
-"ehtiyojlari."
+"Men startaplar uchun asosiy e'tiborni ish unumdorligi, avtomatlashtirish va "
+"foydalanuvchi ehtiyojlariga qaratgan holda, amaliy va kengaytiriladigan "
+"yechimlar yarataman."
 
 #: .\templates\home.html:28
 msgid "Contact me"
