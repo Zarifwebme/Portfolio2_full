@@ -39,7 +39,7 @@ msgid "Experience"
 msgstr "Tajriba"
 
 msgid "Hi, I'm Zarifjon Baxtiyorov — a Backend Developer and Software Engineer from Tashkent, Uzbekistan. I specialize in building practical, scalable web applications using Python and Django."
-msgstr "Salom, men Zarifjon Baxtiyorov — Toshkent, O‘zbekistondan Backend Developer va Dasturiy muhandisiman. Python va Django yordamida amaliy, kengaytiriladigan veb-ilovalar yaratishga ixtisoslashganman."
+msgstr "Men Zarifjon, Backend muhandisiman. Asosiy e'tiborimni Python/Django ekotizimida yuqori yuklamaga chidamli va foydalanuvchi ehtiyojlariga moslangan murakkab tizimlarni yaratishga qaratganman."
 
 msgid "I'm passionate about automation, clean architecture, and solving real-world problems. I've worked on startup projects, contributed to academic research, and continue to grow in areas like Machine Learning and Deep Learning."
 msgstr "Avtomatlashtirish, toza arxitektura va real muammolarni yechishga qiziqaman. Startup loyihalarida ishlaganman, akademik tadqiqotlarga hissa qo‘shganman va Machine Learning hamda Deep Learning sohalarida rivojlanishda davom etmoqdaman."
