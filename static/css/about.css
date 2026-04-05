@@ -35,6 +35,11 @@
   border-bottom: 1px solid var(--line);
   font-weight: 800;
 }
+.skillhead .skill-icon{
+  color: #b06cff;
+  margin-right: 8px;
+  font-size: 0.95rem;
+}
 .skillbody{
   padding: 10px 12px;
   color: var(--muted);
