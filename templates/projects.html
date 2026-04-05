@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
+{% load project_tags %}
 
 {% block title %}Projects{% endblock %}
 {% block extra_css %}
@@ -24,7 +25,11 @@
             <img src="{{ p.image.url }}" alt="{{ p.title }}">
           {% endif %}
         </div>
-        <div class="stack">{{ p.stack }}</div>
+        <div class="stack stack-chips">
+          {% for item in p.stack|stack_items %}
+            <span class="tech-item"><i class="{{ item.icon }} tech-icon" aria-hidden="true"></i>{{ item.label }}</span>
+          {% endfor %}
+        </div>
       
         <div class="pcard-body">
           <div class="pcard-title">{{ p.title }}</div>
@@ -58,7 +63,11 @@
     {% for p in small %}
     <div class="col-md-6 col-lg-4">
       <div class="pmini">
-        <div class="mini-stack">{{ p.stack }}</div>
+        <div class="mini-stack stack-chips">
+          {% for item in p.stack|stack_items %}
+            <span class="tech-item"><i class="{{ item.icon }} tech-icon" aria-hidden="true"></i>{{ item.label }}</span>
+          {% endfor %}
+        </div>
         <div class="mini-title">{{ p.title }}</div>
         <div class="mini-desc">{{ p.description }}</div>
       

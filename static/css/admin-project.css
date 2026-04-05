@@ -1,0 +1,65 @@
+.form-row.field-backend_stack.field-frontend_stack.field-database_stack.field-other_stack {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 14px;
+}
+
+.form-row.field-backend_stack.field-frontend_stack.field-database_stack.field-other_stack .field-box {
+  min-width: 0;
+  width: 100%;
+}
+
+.form-row.field-backend_stack.field-frontend_stack.field-database_stack.field-other_stack .field-box > div {
+  margin-bottom: 0;
+}
+
+.form-row.field-backend_stack.field-frontend_stack.field-database_stack.field-other_stack .field-box .help {
+  margin-top: 6px;
+}
+
+.form-row.field-backend_stack.field-frontend_stack.field-database_stack.field-other_stack .checkbox-row,
+.form-row.field-backend_stack.field-frontend_stack.field-database_stack.field-other_stack ul,
+.form-row.field-backend_stack.field-frontend_stack.field-database_stack.field-other_stack ul li {
+  display: block;
+}
+
+.form-row.field-backend_stack.field-frontend_stack.field-database_stack.field-other_stack ul {
+  margin: 8px 0 0;
+  padding: 0;
+}
+
+.form-row.field-backend_stack.field-frontend_stack.field-database_stack.field-other_stack li {
+  list-style: none;
+  margin: 0 0 5px;
+}
+
+@media (min-width: 1100px) {
+  .form-row.field-backend_stack.field-frontend_stack.field-database_stack.field-other_stack .field-backend_stack,
+  .form-row.field-backend_stack.field-frontend_stack.field-database_stack.field-other_stack .field-frontend_stack,
+  .form-row.field-backend_stack.field-frontend_stack.field-database_stack.field-other_stack .field-database_stack,
+  .form-row.field-backend_stack.field-frontend_stack.field-database_stack.field-other_stack .field-other_stack {
+    width: calc(25% - 11px);
+    flex: 0 0 calc(25% - 11px);
+  }
+}
+
+@media (max-width: 1099.98px) {
+  .form-row.field-backend_stack.field-frontend_stack.field-database_stack.field-other_stack .field-backend_stack,
+  .form-row.field-backend_stack.field-frontend_stack.field-database_stack.field-other_stack .field-frontend_stack,
+  .form-row.field-backend_stack.field-frontend_stack.field-database_stack.field-other_stack .field-database_stack,
+  .form-row.field-backend_stack.field-frontend_stack.field-database_stack.field-other_stack .field-other_stack {
+    width: calc(50% - 7px);
+    flex: 0 0 calc(50% - 7px);
+  }
+}
+
+@media (max-width: 700px) {
+  .form-row.field-backend_stack.field-frontend_stack.field-database_stack.field-other_stack .field-backend_stack,
+  .form-row.field-backend_stack.field-frontend_stack.field-database_stack.field-other_stack .field-frontend_stack,
+  .form-row.field-backend_stack.field-frontend_stack.field-database_stack.field-other_stack .field-database_stack,
+  .form-row.field-backend_stack.field-frontend_stack.field-database_stack.field-other_stack .field-other_stack {
+    width: 100%;
+    flex: 0 0 100%;
+  }
+}

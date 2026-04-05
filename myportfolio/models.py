@@ -1,6 +1,7 @@
 from django.db import models
 from django.core.exceptions import ValidationError
 
+
 class Project(models.Model):
     CATEGORY_CHOICES = [
         ("complete", "Complete apps"),
@@ -13,12 +14,53 @@ class Project(models.Model):
         ("cached", "Cached"),
         ("none", "None"),
     ]
+    STACK_CHOICES = [
+        ("python", "Python"),
+        ("django", "Django"),
+        ("drf", "DRF"),
+        ("flask", "Flask"),
+        ("fastapi", "FastAPI"),
+        ("javascript", "JavaScript"),
+        ("typescript", "TypeScript"),
+        ("react", "React"),
+        ("nextjs", "Next.js"),
+        ("vuejs", "Vue.js"),
+        ("html5", "HTML5"),
+        ("css3", "CSS3"),
+        ("tailwindcss", "TailwindCSS"),
+        ("bootstrap", "Bootstrap"),
+        ("nodejs", "Node.js"),
+        ("express", "Express"),
+        ("postgresql", "PostgreSQL"),
+        ("mongodb", "MongoDB"),
+        ("mysql", "MySQL"),
+        ("sqlite", "SQLite"),
+        ("redis", "Redis"),
+        ("celery", "Celery"),
+        ("docker", "Docker"),
+        ("kubernetes", "Kubernetes"),
+        ("nginx", "Nginx"),
+        ("linux", "Linux"),
+        ("github", "GitHub"),
+        ("git", "Git"),
+        ("postman", "Postman"),
+        ("pytest", "Pytest"),
+        ("pandas", "Pandas"),
+        ("numpy", "NumPy"),
+        ("sklearn", "Scikit-learn"),
+        ("tensorflow", "TensorFlow"),
+        ("pytorch", "PyTorch"),
+        ("aws", "AWS"),
+        ("gcp", "GCP"),
+        ("firebase", "Firebase"),
+        ("figma", "Figma"),
+    ]
 
     category = models.CharField(max_length=20, choices=CATEGORY_CHOICES, default="complete")
     title = models.CharField(max_length=120)
     description = models.CharField(max_length=240, blank=True)
     image = models.ImageField(upload_to="projects/", blank=True, null=True)
-    stack = models.CharField(max_length=180, blank=True)  # "React Node.js ..." kabi
+    stack = models.CharField(max_length=500, blank=True)  # "React, Node.js, Django" kabi
     button_type = models.CharField(max_length=20, choices=BUTTON_CHOICES, default="live")
     button_url = models.URLField(blank=True)
     button_choice = models.CharField(
@@ -36,6 +78,15 @@ class Project(models.Model):
 
     class Meta:
         ordering = ["order", "-created_at"]
+
+    def get_stack_list(self):
+        if not self.stack:
+            return []
+        separators = [",", "·", "|"]
+        normalized = self.stack
+        for sep in separators:
+            normalized = normalized.replace(sep, ",")
+        return [item.strip() for item in normalized.split(",") if item.strip()]
 
     def clean(self):
         super().clean()

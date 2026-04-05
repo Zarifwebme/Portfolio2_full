@@ -37,6 +37,27 @@
   color: var(--muted);
   font-size: 12px;
 }
+.stack-chips{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+}
+.stack-chips .tech-item{
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 9px;
+  border: 1px solid rgba(176,108,255,.35);
+  border-radius: 999px;
+  background: rgba(176,108,255,.08);
+  color: var(--text);
+  font-size: 12px;
+  line-height: 1.2;
+}
+.stack-chips .tech-item .tech-icon{
+  color: #b06cff;
+  font-size: .9rem;
+}
 
 .pcard-body{ padding: 14px 12px 16px; }
 .pcard-title{ font-weight: 800; font-size: 18px; }
