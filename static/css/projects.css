@@ -107,9 +107,9 @@ body::before{
   content: "";
   position: fixed;
   inset: 0;
-  background: rgba(7, 9, 14, .28);
-  backdrop-filter: blur(7px);
-  -webkit-backdrop-filter: blur(7px);
+  background: rgba(7, 9, 14, .2);
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
   opacity: 0;
   pointer-events: none;
   transition: opacity .28s ease;
@@ -125,26 +125,4 @@ body:has(.complete-grid .pcard:hover)::before{
   .section-title{ font-size: 20px; }
   .pcard-title{ font-size: 17px; }
   .pcard-desc{ font-size: 13px; }
-}
-
-@media (max-width: 767.98px){
-  .complete-grid .pcard:hover{
-    transform: none;
-    border-color: var(--line);
-    box-shadow: none;
-    z-index: 1;
-  }
-
-  .complete-grid .pcard:hover .thumb img{
-    transform: none;
-    opacity: .95;
-  }
-
-  body::before{
-    content: none;
-  }
-
-  body:has(.complete-grid .pcard:hover)::before{
-    opacity: 0;
-  }
 }
