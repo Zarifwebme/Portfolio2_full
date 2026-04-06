@@ -126,3 +126,25 @@ body:has(.complete-grid .pcard:hover)::before{
   .pcard-title{ font-size: 17px; }
   .pcard-desc{ font-size: 13px; }
 }
+
+@media (max-width: 767.98px){
+  .complete-grid .pcard:hover{
+    transform: none;
+    border-color: var(--line);
+    box-shadow: none;
+    z-index: 1;
+  }
+
+  .complete-grid .pcard:hover .thumb img{
+    transform: none;
+    opacity: .95;
+  }
+
+  body::before{
+    content: none;
+  }
+
+  body:has(.complete-grid .pcard:hover)::before{
+    opacity: 0;
+  }
+}
