@@ -43,6 +43,12 @@ class ProjectAdminForm(forms.ModelForm):
         widget=GroupedStackCheckboxSelect,
         help_text="Stack texnologiyalarini belgilang.",
     )
+    stack_custom = forms.CharField(
+        label="Custom stack",
+        required=False,
+        widget=forms.TextInput(attrs={"placeholder": "Masalan: Svelte, GraphQL"}),
+        help_text="Ro'yxatda bo'lmagan texnologiyalarni vergul bilan kiriting.",
+    )
 
     class Meta:
         model = Project
@@ -50,27 +56,48 @@ class ProjectAdminForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
+        choices_map = {label.lower(): value for value, label in Project.STACK_CHOICES}
         if self.instance and self.instance.pk:
-            existing = [item.lower() for item in self.instance.get_stack_list()]
-            choices_map = {label.lower(): value for value, label in Project.STACK_CHOICES}
+            existing_original = self.instance.get_stack_list()
+            existing = [item.lower() for item in existing_original]
             self.fields["stack_choices"].initial = [
                 choices_map[item] for item in existing if item in choices_map
             ]
+            custom_items = [item for item in existing_original if item.lower() not in choices_map]
+            self.fields["stack_custom"].initial = ", ".join(custom_items)
+
+    @staticmethod
+    def _parse_custom_stack(value):
+        if not value:
+            return []
+        normalized = value
+        for sep in ["\n", "|", "·", ";"]:
+            normalized = normalized.replace(sep, ",")
+        return [item.strip() for item in normalized.split(",") if item.strip()]
 
     def clean(self):
         cleaned = super().clean()
         selected = cleaned.get("stack_choices") or []
         selected = list(dict.fromkeys(selected))
         labels_by_value = dict(Project.STACK_CHOICES)
-        cleaned["stack"] = ", ".join(labels_by_value[val] for val in selected)
+        selected_labels = [labels_by_value[val] for val in selected if val in labels_by_value]
+        custom_items = self._parse_custom_stack(cleaned.get("stack_custom"))
+
+        merged = []
+        seen = set()
+        for item in selected_labels + custom_items:
+            key = item.lower()
+            if key in seen:
+                continue
+            seen.add(key)
+            merged.append(item)
+
+        cleaned["stack"] = ", ".join(merged)
         return cleaned
 
     def save(self, commit=True):
         instance = super().save(commit=False)
-        selected = self.cleaned_data.get("stack_choices") or []
-        selected = list(dict.fromkeys(selected))
-        labels_by_value = dict(Project.STACK_CHOICES)
-        instance.stack = ", ".join(labels_by_value[val] for val in selected)
+        instance.stack = self.cleaned_data.get("stack", "")
         if commit:
             instance.save()
         return instance
@@ -87,6 +114,7 @@ class ProjectAdmin(admin.ModelAdmin):
         "title",
         "description",
         "stack_choices",
+        "stack_custom",
         "image",
         "button_type",
         "button_url",
