@@ -3,6 +3,22 @@ from django.contrib import messages
 from django.conf import settings
 from .models import Project, ContactMessage
 import requests
+
+
+def normalize_phone(phone):
+    raw_phone = (phone or "").strip()
+    if not raw_phone:
+        return ""
+
+    if not raw_phone.isdigit():
+        return None
+
+    if len(raw_phone) not in (9, 12):
+        return None
+
+    return raw_phone
+
+
 def home(request):
     return render(request, "home.html")
 
@@ -19,12 +35,16 @@ def projects(request):
 def contact(request):
     if request.method == "POST":
         name = (request.POST.get("name") or "").strip()
-        phone = (request.POST.get("phone") or "").strip()
+        phone = normalize_phone(request.POST.get("phone"))
         email = (request.POST.get("email") or "").strip()
         message_text = (request.POST.get("message") or "").strip()
 
         if not name or not message_text:
             messages.error(request, "Name va Message majburiy.")
+            return redirect("contact")
+
+        if phone is None:
+            messages.error(request, "Phone faqat raqamlardan iborat bo'lishi kerak.")
             return redirect("contact")
 
         msg = ContactMessage.objects.create(

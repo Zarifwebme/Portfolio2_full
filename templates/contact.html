@@ -59,7 +59,15 @@
 
             <div class="col-md-6">
               <label class="form-label small muted">{% trans "Phone" %}</label>
-              <input class="form-control dark-input" name="phone" autocomplete="off"/>
+              <input
+                class="form-control dark-input"
+                type="text"
+                name="phone"
+                inputmode="numeric"
+                pattern="[0-9]*"
+                placeholder="919434864"
+                autocomplete="off"
+              />
             </div>
 
             <div class="col-12">
