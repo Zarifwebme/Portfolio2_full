@@ -56,6 +56,7 @@ MIDDLEWARE = [
     'django.contrib.sessions.middleware.SessionMiddleware',
     'rootloyiha.middleware.DefaultUzLanguageMiddleware',
     'django.middleware.common.CommonMiddleware',
+    'rootloyiha.middleware.StaticMediaCacheMiddleware',
     "django.middleware.locale.LocaleMiddleware",
     'rootloyiha.middleware.ErrorPageMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -148,5 +149,11 @@ STATIC_ROOT = BASE_DIR / "staticfiles"     # faqat collectstatic uchun
 
 MEDIA_URL = "/media/"
 MEDIA_ROOT = BASE_DIR / "media"
+
+# Browser cache lifetimes (seconds)
+STATIC_CACHE_MAX_AGE = int(os.getenv("STATIC_CACHE_MAX_AGE", 30 * 24 * 60 * 60))
+MEDIA_CACHE_MAX_AGE = int(os.getenv("MEDIA_CACHE_MAX_AGE", 7 * 24 * 60 * 60))
+MEDIA_PROJECTS_CACHE_MAX_AGE = int(os.getenv("MEDIA_PROJECTS_CACHE_MAX_AGE", 180 * 24 * 60 * 60))
+
 TELEGRAM_BOT_TOKEN = os.getenv("TELEGRAM_BOT_TOKEN")
 TELEGRAM_CHAT_ID = os.getenv("TELEGRAM_CHAT_ID")

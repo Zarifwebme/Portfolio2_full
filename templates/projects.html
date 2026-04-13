@@ -5,6 +5,11 @@
 {% block title %}Projects{% endblock %}
 {% block extra_css %}
 <link rel="stylesheet" href="{% static 'css/projects.css' %}">
+{% with lcp_project=complete|first %}
+  {% if lcp_project and lcp_project.image %}
+    <link rel="preload" as="image" href="{{ lcp_project.image.url }}">
+  {% endif %}
+{% endwith %}
 {% endblock %}
 
 {% block content %}
@@ -22,7 +27,11 @@
       <div class="pcard">
         <div class="thumb">
           {% if p.image %}
-            <img src="{{ p.image.url }}" alt="{{ p.title }}">
+            {% if forloop.first %}
+              <img src="{{ p.image.url }}" alt="{{ p.title }}" fetchpriority="high" loading="eager" decoding="async">
+            {% else %}
+              <img src="{{ p.image.url }}" alt="{{ p.title }}" loading="lazy" decoding="async">
+            {% endif %}
           {% endif %}
         </div>
         <div class="stack stack-chips">

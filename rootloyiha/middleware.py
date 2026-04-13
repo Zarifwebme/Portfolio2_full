@@ -1,6 +1,8 @@
 from django.conf import settings
 from django.shortcuts import render
 from django.utils import translation
+from django.utils.http import http_date
+import time
 
 
 class DefaultUzLanguageMiddleware:
@@ -50,5 +52,39 @@ class ErrorPageMiddleware:
 
         if response.status_code in self.ERROR_STATUS_CODES or response.status_code >= 500:
             return render(request, "404.html", status=response.status_code)
+
+        return response
+
+
+class StaticMediaCacheMiddleware:
+    """Attach cache headers for static and media assets to speed up repeat visits."""
+
+    def __init__(self, get_response):
+        self.get_response = get_response
+
+    def __call__(self, request):
+        response = self.get_response(request)
+
+        if request.method not in ("GET", "HEAD"):
+            return response
+
+        if response.has_header("Cache-Control"):
+            return response
+
+        path = request.path or ""
+        static_url = settings.STATIC_URL or "/static/"
+        media_url = settings.MEDIA_URL or "/media/"
+
+        max_age = None
+        if path.startswith(static_url):
+            max_age = getattr(settings, "STATIC_CACHE_MAX_AGE", 30 * 24 * 60 * 60)
+        elif path.startswith(f"{media_url}projects/"):
+            max_age = getattr(settings, "MEDIA_PROJECTS_CACHE_MAX_AGE", 180 * 24 * 60 * 60)
+        elif path.startswith(media_url):
+            max_age = getattr(settings, "MEDIA_CACHE_MAX_AGE", 7 * 24 * 60 * 60)
+
+        if max_age and max_age > 0:
+            response["Cache-Control"] = f"public, max-age={int(max_age)}"
+            response["Expires"] = http_date(time.time() + int(max_age))
 
         return response
