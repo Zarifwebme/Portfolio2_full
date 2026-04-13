@@ -120,6 +120,30 @@ body:has(.complete-grid .pcard:hover)::before{
   opacity: 1;
 }
 
+/* Mobile/touch: disable card hover interactions and blur backdrop */
+@media (hover: none) and (pointer: coarse){
+  .pcard,
+  .complete-grid .pcard:hover{
+    transform: none;
+    box-shadow: none;
+    border-color: var(--line);
+    z-index: 1;
+  }
+
+  .thumb img,
+  .complete-grid .pcard:hover .thumb img{
+    transform: none;
+    opacity: .95;
+  }
+
+  body::before,
+  body:has(.complete-grid .pcard:hover)::before{
+    opacity: 0;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+}
+
 @media (max-width: 575.98px){
   .page-title{ font-size: 28px; }
   .section-title{ font-size: 20px; }
