@@ -61,15 +61,16 @@ function setupSubmitStatus(){
   const form = document.getElementById("contactForm");
   const status = document.getElementById("formStatus");
   const phoneInput = form ? form.querySelector('input[name="phone"]') : null;
+  const submitButton = form ? form.querySelector('button[type="submit"]') : null;
 
   if (!form || !status) return;
 
-  function setPhoneError(message){
+  function setStatus(message, kind){
     status.textContent = message;
-    status.style.color = "#ff8b8b";
+    status.style.color = kind === "error" ? "#ff8b8b" : "#9cff9c";
   }
 
-  function clearPhoneError(){
+  function clearStatus(){
     status.textContent = "";
     status.style.color = "";
   }
@@ -86,29 +87,60 @@ function setupSubmitStatus(){
       }
 
       if (digitsOnly.length === 0){
-        clearPhoneError();
+        clearStatus();
         return;
       }
 
       if (digitsOnly.length !== 9 && digitsOnly.length !== 12){
-        setPhoneError("Telefon 9 yoki 12 xonali bo'lishi kerak.");
+        setStatus("Telefon 9 yoki 12 xonali bo'lishi kerak.", "error");
         return;
       }
 
-      clearPhoneError();
+      clearStatus();
     });
   }
 
-  form.addEventListener("submit", (event) => {
+  form.addEventListener("submit", async (event) => {
+    event.preventDefault();
+
     if (phoneInput && !isValidPhone(phoneInput.value.trim())){
-      event.preventDefault();
-      setPhoneError("Telefon faqat 9 yoki 12 xonali raqam bo'lishi kerak.");
+      setStatus("Telefon faqat 9 yoki 12 xonali raqam bo'lishi kerak.", "error");
       phoneInput.focus();
       return;
     }
 
-    clearPhoneError();
-    status.textContent = "Sending...";
+    clearStatus();
+
+    if (submitButton){
+      submitButton.disabled = true;
+    }
+
+    setStatus("Sending...", "success");
+
+    try {
+      const response = await fetch(form.action || window.location.href, {
+        method: "POST",
+        body: new FormData(form),
+        headers: {
+          "X-Requested-With": "XMLHttpRequest",
+          "Accept": "application/json",
+        },
+        credentials: "same-origin",
+      });
+
+      const data = await response.json();
+      setStatus(data.message || "Xabaringiz yuborildi ✅", response.ok ? "success" : "error");
+
+      if (response.ok){
+        form.reset();
+      }
+    } catch (error){
+      setStatus("Xabar yuborilmadi. Qayta urinib ko'ring.", "error");
+    } finally {
+      if (submitButton){
+        submitButton.disabled = false;
+      }
+    }
   });
 }
 

@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.conf import settings
+from django.http import JsonResponse
 from .models import Project, ContactMessage
 import requests
 
@@ -17,6 +18,21 @@ def normalize_phone(phone):
         return None
 
     return raw_phone
+
+
+def contact_response(request, *, success, message, status=200, telegram_sent=None):
+    if request.headers.get("x-requested-with") == "XMLHttpRequest":
+        payload = {"success": success, "message": message}
+        if telegram_sent is not None:
+            payload["telegram_sent"] = telegram_sent
+        return JsonResponse(payload, status=status)
+
+    if success:
+        messages.success(request, message)
+    else:
+        messages.error(request, message)
+
+    return redirect("contact")
 
 
 def home(request):
@@ -40,12 +56,15 @@ def contact(request):
         message_text = (request.POST.get("message") or "").strip()
 
         if not name or not message_text:
-            messages.error(request, "Name va Message majburiy.")
-            return redirect("contact")
+            return contact_response(request, success=False, message="Name va Message majburiy.", status=400)
 
         if phone is None:
-            messages.error(request, "Phone faqat raqamlardan iborat bo'lishi kerak.")
-            return redirect("contact")
+            return contact_response(
+                request,
+                success=False,
+                message="Telefon faqat 9 yoki 12 xonali raqam bo'lishi kerak.",
+                status=400,
+            )
 
         msg = ContactMessage.objects.create(
             name=name, phone=phone, email=email, message=message_text
@@ -70,14 +89,29 @@ def contact(request):
                     timeout=10,
                 )
                 if r.status_code == 200:
-                    messages.success(request, "Xabaringiz yuborildi ✅")
+                    return contact_response(request, success=True, message="Xabaringiz yuborildi ✅", telegram_sent=True)
                 else:
-                    messages.warning(request, "Xabar saqlandi, lekin Telegramga yuborilmadi.")
+                    return contact_response(
+                        request,
+                        success=True,
+                        message="Xabar saqlandi, lekin Telegramga yuborilmadi.",
+                        telegram_sent=False,
+                    )
             except Exception:
-                messages.warning(request, "Xabar saqlandi, lekin Telegramga yuborilmadi.")
+                return contact_response(
+                    request,
+                    success=True,
+                    message="Xabar saqlandi, lekin Telegramga yuborilmadi.",
+                    telegram_sent=False,
+                )
         else:
-            messages.success(request, "Xabaringiz yuborildi ✅ (Telegram sozlanmagan)")
+            return contact_response(
+                request,
+                success=True,
+                message="Xabaringiz yuborildi ✅ (Telegram sozlanmagan)",
+                telegram_sent=False,
+            )
 
-        return redirect("contact")
+        return contact_response(request, success=True, message="Xabaringiz yuborildi ✅", telegram_sent=True)
 
     return render(request, "contact.html")

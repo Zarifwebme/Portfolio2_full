@@ -46,6 +46,29 @@ class ContactViewTests(TestCase):
         self.assertTrue(mock_post.called)
         self.assertIn("📞 Phone: 998919434864", mock_post.call_args.kwargs["json"]["text"])
 
+    @patch("myportfolio.views.requests.post")
+    def test_contact_ajax_returns_json(self, mock_post):
+        mock_post.return_value.status_code = 200
+
+        response = self.client.post(
+            "/contact/",
+            {
+                "name": "Ali",
+                "phone": "919434864",
+                "email": "ali@example.com",
+                "message": "Salom",
+            },
+            HTTP_X_REQUESTED_WITH="XMLHttpRequest",
+            HTTP_ACCEPT="application/json",
+        )
+
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response["Content-Type"], "application/json")
+        self.assertJSONEqual(
+            response.content.decode(),
+            {"success": True, "message": "Xabaringiz yuborildi ✅", "telegram_sent": True},
+        )
+
     def test_contact_rejects_wrong_length_phone(self):
         response = self.client.post(
             "/contact/",
@@ -60,7 +83,7 @@ class ContactViewTests(TestCase):
 
         self.assertEqual(response.status_code, 200)
         self.assertEqual(ContactMessage.objects.count(), 0)
-        self.assertContains(response, "faqat raqamlardan iborat")
+        self.assertContains(response, "9 yoki 12 xonali raqam")
 
     def test_contact_rejects_formatted_phone(self):
         response = self.client.post(
@@ -76,4 +99,4 @@ class ContactViewTests(TestCase):
 
         self.assertEqual(response.status_code, 200)
         self.assertEqual(ContactMessage.objects.count(), 0)
-        self.assertContains(response, "faqat raqamlardan iborat")
+        self.assertContains(response, "9 yoki 12 xonali raqam")
