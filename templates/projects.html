@@ -4,7 +4,8 @@
 
 {% block title %}Projects{% endblock %}
 {% block extra_css %}
-<link rel="stylesheet" href="{% static 'css/projects.css' %}">
+<link rel="preload" as="style" href="{% static 'css/projects.css' %}" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="{% static 'css/projects.css' %}"></noscript>
 {% with lcp_project=complete|first %}
   {% if lcp_project and lcp_project.image %}
     <link rel="preload" as="image" href="{{ lcp_project.image.url }}">
