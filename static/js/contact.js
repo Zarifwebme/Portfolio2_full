@@ -6,6 +6,28 @@ function sleep(ms){
   return new Promise(r => setTimeout(r, ms));
 }
 
+async function copyText(text){
+  if (navigator.clipboard && window.isSecureContext){
+    await navigator.clipboard.writeText(text);
+    return;
+  }
+
+  const helper = document.createElement("textarea");
+  helper.value = text;
+  helper.setAttribute("readonly", "");
+  helper.style.position = "absolute";
+  helper.style.left = "-9999px";
+  document.body.appendChild(helper);
+  helper.select();
+
+  const successful = document.execCommand("copy");
+  document.body.removeChild(helper);
+
+  if (!successful){
+    throw new Error("Copy command failed");
+  }
+}
+
 async function typeLine(el, text){
   for (let i = 0; i < text.length; i++){
     el.textContent += text[i];
@@ -144,6 +166,35 @@ function setupSubmitStatus(){
   });
 }
 
+function setupSupportCardCopy(){
+  const button = document.getElementById("copyCardButton");
+  const status = document.getElementById("copyStatus");
+
+  if (!button || !status) return;
+
+  const successMessage = button.dataset.copySuccess || "Copied";
+  const errorMessage = button.dataset.copyError || "Copy failed";
+
+  button.addEventListener("click", async () => {
+    const textToCopy = button.dataset.copyText || "";
+
+    if (!textToCopy){
+      status.textContent = errorMessage;
+      status.className = "copy-status error";
+      return;
+    }
+
+    try {
+      await copyText(textToCopy);
+      status.textContent = successMessage;
+      status.className = "copy-status success";
+    } catch (error){
+      status.textContent = errorMessage;
+      status.className = "copy-status error";
+    }
+  });
+}
+
 
 /* ======================
    START
@@ -152,4 +203,5 @@ function setupSubmitStatus(){
 document.addEventListener("DOMContentLoaded", () => {
   runTerminal();
   setupSubmitStatus();
+  setupSupportCardCopy();
 });

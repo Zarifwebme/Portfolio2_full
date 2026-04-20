@@ -166,6 +166,14 @@ msgstr "Bu erda meni qo'llab-quvvatlang"
 msgid "Message me here"
 msgstr "Xabar yo'llang"
 
+#: .\templates\contact.html:33
+msgid "The card number has been copied."
+msgstr "Karta raqami nusxalandi."
+
+#: .\templates\contact.html:34
+msgid "Copy error. Please copy manually."
+msgstr "Nusxalashda xatolik. Iltimos, qo'lda nusxalang."
+
 #: .\templates\contact.html:48
 msgid "contact-form"
 msgstr "aloqa-shakli"

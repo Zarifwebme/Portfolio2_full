@@ -169,6 +169,14 @@ msgstr "Поддержи меня здесь"
 msgid "Message me here"
 msgstr "Напишите мне здесь"
 
+#: .\templates\contact.html:33
+msgid "The card number has been copied."
+msgstr "Номер карты скопирован."
+
+#: .\templates\contact.html:34
+msgid "Copy error. Please copy manually."
+msgstr "Не удалось скопировать. Пожалуйста, скопируйте вручную."
+
 #: .\templates\contact.html:48
 msgid "contact-form"
 msgstr "контактная-форма"

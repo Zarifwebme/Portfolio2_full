@@ -23,7 +23,20 @@
         <div class="col-md-6">
           <div class="panel mini">
             <div class="mini-title">{% trans "Support me here" %}</div>
-            <div class="mini-val">9860350148095226</div>
+            <div class="mini-val copy-row">
+              <span id="supportCardNumber">9860350148095226</span>
+              <button
+                type="button"
+                class="copy-btn"
+                id="copyCardButton"
+                data-copy-text="9860350148095226"
+                data-copy-success="{% trans 'The card number has been copied.' %}"
+                data-copy-error="{% trans 'Copy error. Please copy manually.' %}"
+              >
+                {% trans "Copy" %}
+              </button>
+            </div>
+            <div id="copyStatus" class="copy-status" aria-live="polite"></div>
           </div>
         </div>
         <div class="col-md-6">

@@ -13,6 +13,49 @@
 .mini-title{ color: var(--text); font-weight: 800; margin-bottom: 6px; }
 .mini-val{ color: var(--muted); font-size: 13px; line-height: 1.7; }
 
+.copy-row{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.copy-btn{
+  border: 1px solid var(--line);
+  background: rgba(0,0,0,.14);
+  color: var(--text);
+  padding: 5px 10px;
+  border-radius: 10px;
+  font-size: 12px;
+  line-height: 1;
+  cursor: pointer;
+  transition: background .2s, border-color .2s, transform .15s;
+}
+
+.copy-btn:hover{
+  background: rgba(0,0,0,.22);
+  border-color: rgba(176,108,255,.45);
+}
+
+.copy-btn:active{
+  transform: translateY(1px);
+}
+
+.copy-status{
+  margin-top: 8px;
+  font-size: 12px;
+  color: var(--muted);
+  min-height: 16px;
+}
+
+.copy-status.success{
+  color: #9cff9c;
+}
+
+.copy-status.error{
+  color: #ff8b8b;
+}
+
 .form-title{
   font-weight: 800;
   font-size: 16px;
