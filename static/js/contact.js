@@ -174,23 +174,37 @@ function setupSupportCardCopy(){
 
   const successMessage = button.dataset.copySuccess || "Copied";
   const errorMessage = button.dataset.copyError || "Copy failed";
+  let clearStatusTimer = null;
+
+  function showStatus(message, kind){
+    if (clearStatusTimer){
+      clearTimeout(clearStatusTimer);
+      clearStatusTimer = null;
+    }
+
+    status.textContent = message;
+    status.className = `copy-status ${kind}`;
+
+    clearStatusTimer = setTimeout(() => {
+      status.textContent = "";
+      status.className = "copy-status";
+      clearStatusTimer = null;
+    }, 2000);
+  }
 
   button.addEventListener("click", async () => {
     const textToCopy = button.dataset.copyText || "";
 
     if (!textToCopy){
-      status.textContent = errorMessage;
-      status.className = "copy-status error";
+      showStatus(errorMessage, "error");
       return;
     }
 
     try {
       await copyText(textToCopy);
-      status.textContent = successMessage;
-      status.className = "copy-status success";
+      showStatus(successMessage, "success");
     } catch (error){
-      status.textContent = errorMessage;
-      status.className = "copy-status error";
+      showStatus(errorMessage, "error");
     }
   });
 }
