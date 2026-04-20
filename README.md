@@ -1,6 +1,7 @@
 # My Portfolio Django
 
 Shaxsiy portfolio sayti Django asosida yozilgan loyiha.
+URL: https://zarifjon.pythonanywhere.com/
 
 ## Asosiy imkoniyatlar
 
