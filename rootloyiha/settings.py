@@ -22,6 +22,10 @@ from dotenv import load_dotenv
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+# Load env files before reading settings from os.getenv.
+load_dotenv(BASE_DIR / ".env")
+load_dotenv(os.path.expanduser("~/.env"))
+
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/6.0/howto/deployment/checklist/
@@ -87,8 +91,6 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'rootloyiha.wsgi.application'
-load_dotenv(BASE_DIR / ".env")          # loyiha rootdagi .env
-load_dotenv(os.path.expanduser("~/.env"))  # serverdagi ~/.env
 
 # Database
 # https://docs.djangoproject.com/en/6.0/ref/settings/#databases
@@ -155,5 +157,5 @@ STATIC_CACHE_MAX_AGE = int(os.getenv("STATIC_CACHE_MAX_AGE", 30 * 24 * 60 * 60))
 MEDIA_CACHE_MAX_AGE = int(os.getenv("MEDIA_CACHE_MAX_AGE", 7 * 24 * 60 * 60))
 MEDIA_PROJECTS_CACHE_MAX_AGE = int(os.getenv("MEDIA_PROJECTS_CACHE_MAX_AGE", 180 * 24 * 60 * 60))
 
-TELEGRAM_BOT_TOKEN = os.getenv("TELEGRAM_BOT_TOKEN")
-TELEGRAM_CHAT_ID = os.getenv("TELEGRAM_CHAT_ID")
+TELEGRAM_BOT_TOKEN = (os.getenv("TELEGRAM_BOT_TOKEN") or "").strip()
+TELEGRAM_CHAT_ID = (os.getenv("TELEGRAM_CHAT_ID") or "").strip()

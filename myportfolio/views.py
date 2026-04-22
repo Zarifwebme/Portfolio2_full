@@ -4,6 +4,10 @@ from django.conf import settings
 from django.http import JsonResponse
 from .models import Project, ContactMessage
 import requests
+import logging
+
+
+logger = logging.getLogger(__name__)
 
 
 def normalize_phone(phone):
@@ -91,13 +95,19 @@ def contact(request):
                 if r.status_code == 200:
                     return contact_response(request, success=True, message="Xabaringiz yuborildi ✅", telegram_sent=True)
                 else:
+                    logger.warning(
+                        "Telegram send failed with status %s, body=%s",
+                        r.status_code,
+                        (r.text or "")[:500],
+                    )
                     return contact_response(
                         request,
                         success=True,
                         message="Xabar saqlandi, lekin Telegramga yuborilmadi.",
                         telegram_sent=False,
                     )
-            except Exception:
+            except requests.RequestException:
+                logger.exception("Telegram send request exception")
                 return contact_response(
                     request,
                     success=True,
@@ -108,7 +118,7 @@ def contact(request):
             return contact_response(
                 request,
                 success=True,
-                message="Xabaringiz yuborildi ✅ (Telegram sozlanmagan)",
+                message="Xabaringiz yuborildi (Telegram sozlanmagan)",
                 telegram_sent=False,
             )
 
