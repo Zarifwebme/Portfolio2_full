@@ -84,15 +84,32 @@ function setupSubmitStatus(){
   const status = document.getElementById("formStatus");
   const phoneInput = form ? form.querySelector('input[name="phone"]') : null;
   const submitButton = form ? form.querySelector('button[type="submit"]') : null;
+  let clearStatusTimer = null;
 
   if (!form || !status) return;
 
-  function setStatus(message, kind){
+  function setStatus(message, kind, autoClear = false){
+    if (clearStatusTimer){
+      clearTimeout(clearStatusTimer);
+      clearStatusTimer = null;
+    }
+
     status.textContent = message;
     status.style.color = kind === "error" ? "#ff8b8b" : "#9cff9c";
+
+    if (autoClear){
+      clearStatusTimer = setTimeout(() => {
+        clearStatus();
+      }, 2000);
+    }
   }
 
   function clearStatus(){
+    if (clearStatusTimer){
+      clearTimeout(clearStatusTimer);
+      clearStatusTimer = null;
+    }
+
     status.textContent = "";
     status.style.color = "";
   }
@@ -126,7 +143,7 @@ function setupSubmitStatus(){
     event.preventDefault();
 
     if (phoneInput && !isValidPhone(phoneInput.value.trim())){
-      setStatus("Telefon faqat 9 yoki 12 xonali raqam bo'lishi kerak.", "error");
+      setStatus("Telefon faqat 9 yoki 12 xonali raqam bo'lishi kerak.", "error", true);
       phoneInput.focus();
       return;
     }
@@ -151,13 +168,13 @@ function setupSubmitStatus(){
       });
 
       const data = await response.json();
-      setStatus(data.message || "Xabaringiz yuborildi ✅", response.ok ? "success" : "error");
+      setStatus(data.message || "Xabaringiz yuborildi ✅", response.ok ? "success" : "error", true);
 
       if (response.ok){
         form.reset();
       }
     } catch (error){
-      setStatus("Xabar yuborilmadi. Qayta urinib ko'ring.", "error");
+      setStatus("Xabar yuborilmadi. Qayta urinib ko'ring.", "error", true);
     } finally {
       if (submitButton){
         submitButton.disabled = false;
