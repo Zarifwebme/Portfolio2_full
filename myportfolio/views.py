@@ -24,11 +24,13 @@ def normalize_phone(phone):
     return raw_phone
 
 
-def contact_response(request, *, success, message, status=200, telegram_sent=None):
+def contact_response(request, *, success, message, status=200, telegram_sent=None, detail=None):
     if request.headers.get("x-requested-with") == "XMLHttpRequest":
         payload = {"success": success, "message": message}
         if telegram_sent is not None:
             payload["telegram_sent"] = telegram_sent
+        if detail and settings.DEBUG:
+            payload["detail"] = detail
         return JsonResponse(payload, status=status)
 
     if success:
@@ -95,9 +97,16 @@ def contact(request):
                 if r.status_code == 200:
                     return contact_response(request, success=True, message="Xabaringiz yuborildi ✅", telegram_sent=True)
                 else:
+                    detail = ""
+                    try:
+                        payload = r.json()
+                        detail = payload.get("description") or (r.text or "")[:500]
+                    except ValueError:
+                        detail = (r.text or "")[:500]
                     logger.warning(
-                        "Telegram send failed with status %s, body=%s",
+                        "Telegram send failed with status %s, detail=%s, body=%s",
                         r.status_code,
+                        detail,
                         (r.text or "")[:500],
                     )
                     return contact_response(
@@ -105,14 +114,16 @@ def contact(request):
                         success=True,
                         message="Xabar saqlandi, lekin Telegramga yuborilmadi.",
                         telegram_sent=False,
+                        detail=detail,
                     )
-            except requests.RequestException:
+            except requests.RequestException as exc:
                 logger.exception("Telegram send request exception")
                 return contact_response(
                     request,
                     success=True,
                     message="Xabar saqlandi, lekin Telegramga yuborilmadi.",
                     telegram_sent=False,
+                    detail=str(exc),
                 )
         else:
             return contact_response(
